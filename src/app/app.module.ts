@@ -11,6 +11,8 @@ import { HomePage } from '../pages/home/home';
 import { SQLite } from '@ionic-native/sqlite';
 import { Geolocation } from '@ionic-native/geolocation';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { CallNumber } from '@ionic-native/call-number';
+import { SMS } from '@ionic-native/sms';
 @NgModule({
   declarations: [
     MyApp,
@@ -30,8 +32,10 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SQLite,
-    Geolocation,
-    InAppBrowser
+    InAppBrowser,
+    CallNumber,
+    SMS,
+    Geolocation
   ]
 })
 export class AppModule {}
