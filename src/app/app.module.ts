@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { OnboardingPage } from '../pages/onboarding/onboarding';
 
 //PULG-IN
 import { SQLite } from '@ionic-native/sqlite';
@@ -16,7 +17,8 @@ import { SMS } from '@ionic-native/sms';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    OnboardingPage
   ],
   imports: [
     BrowserModule,
@@ -25,7 +27,8 @@ import { SMS } from '@ionic-native/sms';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    OnboardingPage
   ],
   providers: [
     StatusBar,
