@@ -31,12 +31,19 @@
     "@ionic-native/status-bar": "4.7.0",
     "@ionic/storage": "2.1.3",
     "call-number": "^1.0.1",
+    "cordova-browser": "5.0.3",
+    "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-geolocation": "^4.0.1",
     "cordova-plugin-inappbrowser": "^3.0.0",
+    "cordova-plugin-ionic-keyboard": "^2.0.5",
+    "cordova-plugin-ionic-webview": "^1.1.19",
+    "cordova-plugin-splashscreen": "^5.0.2",
+    "cordova-plugin-whitelist": "^1.3.3",
     "cordova-sms-plugin": "^0.1.11",
     "cordova-sqlite-storage": "^2.3.2",
     "ionic-angular": "3.9.2",
     "ionicons": "3.0.0",
+    "mx.ferreyra.callnumber": "~0.0.2",
     "rxjs": "5.5.11",
     "sw-toolbox": "3.6.0",
     "zone.js": "0.8.26"
@@ -54,7 +61,15 @@
       },
       "cordova-plugin-inappbrowser": {},
       "mx.ferreyra.callnumber": {},
-      "cordova-sms-plugin": {}
-    }
+      "cordova-sms-plugin": {},
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-device": {},
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-ionic-webview": {},
+      "cordova-plugin-ionic-keyboard": {}
+    },
+    "platforms": [
+      "browser"
+    ]
   }
 }

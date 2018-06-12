@@ -1,14 +1,37 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Accueil
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+
+  <h1 text-center>TCC DIRECTORY</h1>
+
+  <ion-item>
+
+    <ion-label>Selectionner</ion-label>
+
+    <ion-select [(ngModel)]="toppings" multiple="true" cancelText="Retour" okText="Valider" (ionChange)="showselected($event)">
+
+      <ion-option value="{{skill.id}}" *ngFor="let skill of skills.data">
+        <h2>{{skill.name}}</h2>
+      </ion-option>
+
+    </ion-select>
+
+  </ion-item>
+
+  <!-- <p>{{selected_value}}</p> -->
+
+  <button ion-button class='homeButton' (click)="pushLists()">Rechercher</button>
+  <button ion-button class='homeButton' (click)="pushFavoris()">Favoris</button>
+
+  <button ion-button round clear class='homeButton' (click)="pushInfo()">
+    <ion-icon name="information-circle" large></ion-icon>
+  </button>
+
+
 </ion-content>
