@@ -16,7 +16,7 @@ export class BusinessPage {
   data: Observable<any>;
   value: string;
 
-  devTable = [];
+  devTables = [];
 
   private baseUrl: string = 'http://tccdirectory.1click.pf/api/';
 
@@ -33,7 +33,7 @@ export class BusinessPage {
     this.value = this.navParams.get('value');
     const url = `${this.baseUrl}search`;
     let table = [];
-    this.devTable = [];
+    this.devTables = [];
 
     return this.http.post(url, { 'skills': this.value })
       .map(res => res.json())
@@ -42,12 +42,12 @@ export class BusinessPage {
         for (let i = 0; i < data.length; i++) {
           if (table.indexOf(data[i].id) == -1) {
             table.push(data[i].id)
-            this.devTable.push(data[i]);
+            this.devTables.push(data[i]);
           }
         }
-        console.log('Développeur: ', this.devTable);
+        console.log('Développeur: ', this.devTables);
         console.log(this.value);
-        return this.devTable
+        return this.devTables
 
       })
   }

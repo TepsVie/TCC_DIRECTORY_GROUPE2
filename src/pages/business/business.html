@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Business: {{ devTable.length }}</ion-title>
+    <ion-title>Business: {{ devTables.length }}</ion-title>
 
   </ion-navbar>
 
@@ -9,7 +9,7 @@
 
 
 <ion-content padding>
-  <ion-item *ngFor="let devTable of devTable">
+  <ion-item *ngFor="let devTable of devTables">
 
     <button ion-item (click)="pushDevInfo()">
       {{devTable.name}}
