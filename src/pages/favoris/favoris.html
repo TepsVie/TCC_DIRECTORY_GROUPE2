@@ -1,0 +1,36 @@
+<!--
+  Generated template for the FavorisPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Favoris</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <button ion-button full color="light">{{name}}</button>
+
+    <ion-card *ngFor="let favoris of favoris"> 
+      <div style="position: relative">
+    <!-- on parcour un certain nbr de fois les oeuvres ()
+    oeuvre= correspond à chaque élement d'oeuvres et permet d'accéder aux propriétés de l'objet oeuvres -->
+ 
+     </div>
+
+    <ion-item>
+      <ion-icon name="md-contacts" item-start large></ion-icon>
+      <h2>{{ favoris.name }}</h2>
+    </ion-item>
+
+    <button ion-button round (click)="pushDevInfo()">Voir</button>
+
+
+  </ion-card>
+
+</ion-content>

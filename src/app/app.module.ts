@@ -6,6 +6,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { InformationPage } from '../pages/information/information';
+import { FavorisPage } from '../pages/favoris/favoris';
+
 
 //PULG-IN
 import { SQLite } from '@ionic-native/sqlite';
@@ -17,7 +20,9 @@ import { SMS } from '@ionic-native/sms';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    InformationPage,
+    FavorisPage
   ],
   imports: [
     BrowserModule,
@@ -26,7 +31,9 @@ import { SMS } from '@ionic-native/sms';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    InformationPage,
+    FavorisPage
   ],
   providers: [
     StatusBar,
