@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { OnboardingPage } from './onboarding';
+import { OnboardingPage } from '../onboarding/onboarding';
 
 @NgModule({
   declarations: [

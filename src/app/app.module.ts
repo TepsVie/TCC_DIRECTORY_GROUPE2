@@ -7,18 +7,20 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { OnboardingPage } from '../pages/onboarding/onboarding';
-
+import { GeolocationPage } from '../pages/geolocation/geolocation';
 //PULG-IN
 import { SQLite } from '@ionic-native/sqlite';
 import { Geolocation } from '@ionic-native/geolocation';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { CallNumber } from '@ionic-native/call-number';
 import { SMS } from '@ionic-native/sms';
+
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    OnboardingPage
+    // OnboardingPage,
+    GeolocationPage
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,8 @@ import { SMS } from '@ionic-native/sms';
   entryComponents: [
     MyApp,
     HomePage,
-    OnboardingPage
+    // OnboardingPage,
+    GeolocationPage
   ],
   providers: [
     StatusBar,

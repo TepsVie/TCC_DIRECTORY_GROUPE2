@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
-
+import { GeolocationPage } from '../geolocation/geolocation';
 /**
  * Generated class for the OnboardingPage page.
  *
