@@ -12,6 +12,8 @@ import { HomePage } from '../pages/home/home';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http'
 import { DevInfoPage } from './../pages/dev-info/dev-info';
+import { OnboardingPage } from '../pages/onboarding/onboarding';
+import { GeolocationPage } from '../pages/geolocation/geolocation';
 
 //PULG-IN
 import { SQLite } from '@ionic-native/sqlite';
@@ -25,7 +27,9 @@ import { SMS } from '@ionic-native/sms';
     MyApp,
     HomePage,
     BusinessPage,
-    DevInfoPage
+    DevInfoPage,
+    OnboardingPage,
+    GeolocationPage
   ],
   imports: [
     BrowserModule,
@@ -39,6 +43,8 @@ import { SMS } from '@ionic-native/sms';
     HomePage,
     BusinessPage,
     DevInfoPage,
+    OnboardingPage,
+    GeolocationPage
   ],
   providers: [
     StatusBar,

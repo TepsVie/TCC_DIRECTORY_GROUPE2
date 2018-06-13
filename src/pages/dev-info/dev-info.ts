@@ -1,3 +1,4 @@
+import { Geolocation } from '@ionic-native/geolocation';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 import { CallNumber } from '@ionic-native/call-number';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
@@ -6,7 +7,8 @@ import { Http } from '@angular/http';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { SMS } from '@ionic-native/sms';
-import { AlertController, ToastController } from 'ionic-angular';
+import { ToastController } from 'ionic-angular';
+import { GeolocationPage } from '../geolocation/geolocation';
 
 
 
@@ -140,5 +142,7 @@ export class DevInfoPage {
     this.toast.present();
   }
 
-
+  pushGeolocation() {
+    this.navCtrl.push(GeolocationPage)
+  }
 }
