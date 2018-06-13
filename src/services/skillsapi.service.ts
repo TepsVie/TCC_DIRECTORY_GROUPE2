@@ -19,7 +19,7 @@ import { Observable } from 'rxjs/Observable';
 export class SkillsApiService {
 
     private baseUrl: string = 'http://tccdirectory.1click.pf/api/';
-    data: Observable<any>;
+   
 
     constructor(private http: Http) { }
 
@@ -34,12 +34,4 @@ export class SkillsApiService {
 
 
 
-/*     public getBiz(): Promise<any> {
-        const url = `${this.baseUrl}search`;
-        return this.http.get(url)
-            .toPromise()
-            .then(response => response.json() as BizApiGlobal)
-            .catch(error => console.log('Une erreur est survenue ' + error))
-    }
- */
 }

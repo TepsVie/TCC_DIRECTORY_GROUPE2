@@ -1,7 +1,7 @@
+import { DevInfoPage } from './../dev-info/dev-info';
 import { Observable } from 'rxjs/Observable';
 import { Http } from '@angular/http';
 import { BizApiGlobal } from './../../models/bizapi-global.model';
-import { SkillsApiService } from './../../services/skillsapi.service';
 import { Component } from '@angular/core';
 import { NavController, NavParams, Platform } from 'ionic-angular';
 
@@ -12,16 +12,14 @@ import { NavController, NavParams, Platform } from 'ionic-angular';
 })
 export class BusinessPage {
 
-  bizz: BizApiGlobal = new BizApiGlobal;
-  data: Observable<any>;
   value: string;
-
+  idDev= [];
   devTables = [];
-
+  dev_value: string;
   private baseUrl: string = 'http://tccdirectory.1click.pf/api/';
 
 
-  constructor(private platfrom: Platform, public navCtrl: NavController, public navParams: NavParams, private skillsApiService: SkillsApiService, private http: Http) {
+  constructor(private platfrom: Platform, public navCtrl: NavController, public navParams: NavParams, private http: Http) {
     this.platfrom.ready().then(() => {
       this.searchBiz();
     });
@@ -46,14 +44,16 @@ export class BusinessPage {
           }
         }
         console.log('Développeur: ', this.devTables);
-        console.log(this.value);
         return this.devTables
 
       })
   }
 
-  pushDevInfo() {
-    this.navCtrl.push('devInfo')
+  showIdDev(arg) {
+    this.idDev = arg;
+    console.log('ID du DEV: ', this.idDev);
+    this.navCtrl.push(DevInfoPage, { 
+     idDevValue: this.idDev})
   }
 
 }

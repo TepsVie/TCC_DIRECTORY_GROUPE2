@@ -1,3 +1,4 @@
+
 import { BusinessPage } from './../pages/business/business';
 import { SkillsApiService } from './../services/skillsapi.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -10,6 +11,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http'
+import { DevInfoPage } from './../pages/dev-info/dev-info';
 
 //PULG-IN
 import { SQLite } from '@ionic-native/sqlite';
@@ -22,7 +24,8 @@ import { SMS } from '@ionic-native/sms';
   declarations: [
     MyApp,
     HomePage,
-    BusinessPage
+    BusinessPage,
+    DevInfoPage
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,8 @@ import { SMS } from '@ionic-native/sms';
   entryComponents: [
     MyApp,
     HomePage,
-    BusinessPage
+    BusinessPage,
+    DevInfoPage,
   ],
   providers: [
     StatusBar,

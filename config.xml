@@ -86,7 +86,7 @@
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="To locate you" />
     </plugin>
     <plugin name="cordova-plugin-inappbrowser" spec="^3.0.0" />
-    <plugin name="mx.ferreyra.callnumber" spec="~0.0.2" />
     <plugin name="cordova-sms-plugin" spec="^0.1.11" />
     <engine name="browser" spec="5.0.3" />
+    <plugin name="mx.ferreyra.callnumber" spec="~0.0.2" />
 </widget>

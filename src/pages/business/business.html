@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Business: {{ devTables.length }}</ion-title>
+    <ion-title>Recherche: {{ devTables.length }}</ion-title>
 
   </ion-navbar>
 
@@ -9,13 +9,22 @@
 
 
 <ion-content padding>
-  <ion-item *ngFor="let devTable of devTables">
+  <!-- <ion-item *ngFor="let devTable of devTables">
 
-    <button ion-item (click)="pushDevInfo()">
+    <button ion-item (click)=" showIdDev(devTable.id)" >
       {{devTable.name}}
     </button>
 
-  </ion-item>
+  </ion-item> -->
 
+  <ion-list>
+    <ion-item *ngFor="let devTable of devTables">
+      <ion-thumbnail item-start>
+        <img src={{devTable.logo}}>
+      </ion-thumbnail>
+      <h2>{{devTable.name}}</h2>
+      <button ion-button clear item-end (click)=" showIdDev(devTable.id)">Voir</button>
+    </ion-item>
+  </ion-list>
 
 </ion-content>
