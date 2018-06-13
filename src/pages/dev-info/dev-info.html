@@ -42,6 +42,12 @@
     </ion-fab-list>
   </ion-fab>
 
+  <ion-fab top right>
+    <button ion-fab color='lol' (click)="this.updateFavoris()">
+      <ion-icon name="star" [isActive]='favActive'></ion-icon>
+    </button>
+  </ion-fab>
+
   <ion-card>
     <img src={{devInfos.logo}} />
 
@@ -49,24 +55,35 @@
       <ion-row no-padding>
         <ion-col>
           <ion-card-title>
-            <h1>
-              {{devInfos.name}}
-            </h1>
+            <ion-item>
+              <h1>
+                {{devInfos.name}}
+              </h1>
+            </ion-item>
           </ion-card-title>
         </ion-col>
       </ion-row>
-      <p>Adresse : {{devInfos.adresse}}
-      </p>
-      <p>
-        Email: {{devInfos.email}}
-      </p>
-      <p>
-        Télephone: {{devInfos.phone}}
-      </p>
-      <p>
-        Site Web:
-        <a (click)='openWebPage(devInfos.website_url)'>{{devInfos.website_url}}</a>
-      </p>
+      <div>
+        <ion-icon name="home" icon-start> Adresse:</ion-icon>
+        <p>{{devInfos.adresse}}</p>
+      </div>
+      <div>
+        <ion-icon name="at"> Email:</ion-icon>
+        <p>{{devInfos.email}}</p>
+      </div>
+      <div>
+        <ion-icon name="call"> Télephone:</ion-icon>
+        <p>{{devInfos.phone}}</p>
+      </div>
+      <div>
+        <ion-icon name="globe"> Site Web:</ion-icon>
+        <p>
+          <a (click)='openWebPage(devInfos.website_url)'>
+            {{devInfos.website_url}}
+          </a>
+        </p>
+      </div>
+      <button ion-button clear class='Button'>GPS</button>
     </ion-card-content>
 
 

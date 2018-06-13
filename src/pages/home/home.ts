@@ -15,6 +15,8 @@ export class HomePage {
   selected_value: string;
   value: string;
 
+
+
   constructor(private platfrom: Platform, public navCtrl: NavController, private skillsApiService: SkillsApiService) {
     this.platfrom.ready().then(() => {
       this.getSkills();

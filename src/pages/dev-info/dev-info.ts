@@ -1,3 +1,4 @@
+import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 import { CallNumber } from '@ionic-native/call-number';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { InfoBizGlobal } from './../../models/infobiz-global.model';
@@ -22,8 +23,13 @@ export class DevInfoPage {
   public swipe: number = 0;
   url: string;
   phoneNumber: string;
+  favActive = false;
+  toast: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, private iab: InAppBrowser, private callNumber: CallNumber, private sms: SMS, private alertCtrl: AlertController, private toastCtrl: ToastController) {
+  db: SQLiteObject;
+  database: SQLiteObject;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, private iab: InAppBrowser, private callNumber: CallNumber, private sms: SMS, private toastCtrl: ToastController, private sqlite: SQLite) {
     this.getLaunch();
   }
 
@@ -53,7 +59,7 @@ export class DevInfoPage {
       .then(csluiFetched => {
         this.abusInfo = csluiFetched;
         console.log(this.abusInfo);
-        this.presentToast();
+        this.abusToast();
       })
   }
 
@@ -66,17 +72,8 @@ export class DevInfoPage {
       .then(response => response.json() as InfoBizGlobal)
       .catch(error => console.log('Une erreur est survenue ' + error))
   }
-/* 
-  presentAlert() {
-    let alert = this.alertCtrl.create({
-      title: 'Signaler',
-      subTitle: 'Vous avez signaler cette page',
-      buttons: ['OK']
-    });
-    alert.present();
-  } */
 
-  presentToast() {
+  abusToast() {
     const toast = this.toastCtrl.create({
       message: "Merci d'avoir signalé cette page",
       duration: 2400,
@@ -85,21 +82,63 @@ export class DevInfoPage {
     toast.present();
   }
 
-//Méthode Browser
-openWebPage(url: string) {
-  this.iab.create(url, '_system');
-}
+  //Méthode Browser
+  openWebPage(url: string) {
+    this.iab.create(url, '_system');
+  }
 
-//Méthode Call Number
-callDev(phoneNumber: string) {
-  this.callNumber.callNumber(phoneNumber, true)
-    .then(res => console.log('Launched dialer!', res))
-    .catch(err => console.log('Error launching dialer', err));
-}
+  //Méthode Call Number
+  callDev(phoneNumber: string) {
+    this.callNumber.callNumber(phoneNumber, true)
+      .then(res => console.log('Launched dialer!', res))
+      .catch(err => console.log('Error launching dialer', err));
+  }
 
-//Méthode SMS
-sendSms(phoneNumber: string) {
-  this.sms.send(phoneNumber, '');
-}
+  //Méthode SMS
+  sendSms(phoneNumber: string) {
+    this.sms.send(phoneNumber, '');
+  }
+
+  //Favoris
+  devToFavoris(devId: any, devName: any) {
+    this.sqlite.create({
+      name: 'datafavoris.db',
+      location: 'default'
+    })
+      .then((db: SQLiteObject) => {
+        db.executeSql("INSERT INTO table VALUES (devId, devName, 1)", {})
+          .then(() => console.log('Executed SQL'))
+          .catch(e => console.log(e));
+        /* db.executeSql('UPDATE favoris SET fav = 1 WHERE code = ' + code, {})
+          .then((data) => {}) */
+      })
+      .catch(e => console.log(e));
+  }
+
+  updateFavoris() {
+    this.favActive = !this.favActive;
+    console.log('Favoris new state:' + this.favActive);
+    this.favoriteToast(); 
+  }
+
+  favoriteToast() {
+    if (this.favActive == true) {
+      this.toast = this.toastCtrl.create({
+        message: "Ajouté aux favoris",
+        duration: 2400,
+        position: 'top'
+      });
+      
+    }
+    else {
+      this.toast = this.toastCtrl.create({
+        message: "Retiré des favoris",
+        duration: 2400,
+        position: 'top'
+      })
+    }
+    this.toast.present();
+  }
+
 
 }
