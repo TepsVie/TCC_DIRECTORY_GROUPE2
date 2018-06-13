@@ -24,7 +24,7 @@ export class GeolocationPage {
     public navCtrl: NavController, 
     public geolocation: Geolocation
   ) {}
-// Faire apparaître la map
+// Récupérer la position actuel
   ionViewDidLoad() {
     this.loadMap();
     // this.geolocation.getCurrentPosition().then(pos => {
@@ -33,7 +33,7 @@ export class GeolocationPage {
     // })
       // .catch(err => console.log(err));
   }
-// Charger la map
+// Afficher la position
   loadMap() {
 
     this.geolocation.getCurrentPosition().then(
