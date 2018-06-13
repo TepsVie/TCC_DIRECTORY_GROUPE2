@@ -87,5 +87,7 @@
     <plugin name="cordova-plugin-geolocation" spec="^4.0.1">
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="To locate you" />
     </plugin>
+    <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
+    <string>This App wants to track your location</string>
     <plugin name="cordova-sms-plugin" spec="^0.1.11" />
 </widget>

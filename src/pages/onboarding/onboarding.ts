@@ -22,15 +22,15 @@ export class OnboardingPage {
   }
 
   skip() {
-    this.navCtrl.push(HomePage);
+    this.navCtrl.push(GeolocationPage);
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad OnboardingPage');
+    console.log('ionViewDidLoad GeolocationPage');
   }
   
   pushHome() {
-    console.log("pushHome")
-    this.navCtrl.push(HomePage);
+    console.log("pushGeolocation")
+    this.navCtrl.push(GeolocationPage);
   }
 }

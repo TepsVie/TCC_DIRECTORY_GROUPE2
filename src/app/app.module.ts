@@ -19,7 +19,7 @@ import { SMS } from '@ionic-native/sms';
   declarations: [
     MyApp,
     HomePage,
-    // OnboardingPage,
+    OnboardingPage,
     GeolocationPage
   ],
   imports: [
@@ -30,7 +30,7 @@ import { SMS } from '@ionic-native/sms';
   entryComponents: [
     MyApp,
     HomePage,
-    // OnboardingPage,
+    OnboardingPage,
     GeolocationPage
   ],
   providers: [

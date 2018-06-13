@@ -5,7 +5,7 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
-import { DevInfoPage } from '../devinfo/devinfo';
+// import { DevInfoPage } from '../devinfo/devinfo';
 
 declare var google;
 
@@ -17,20 +17,21 @@ export class GeolocationPage {
 
   @ViewChild('map') mapElement: ElementRef;
   map: any;
-  lat: any;
-  lng: any;
+  // lat: any;
+  // lng: any;
 
-  constructor(public navCtrl: NavController, public geolocation: Geolocation) {
-
-  }
+  constructor(
+    public navCtrl: NavController, 
+    public geolocation: Geolocation
+  ) {}
 // Faire apparaître la map
   ionViewDidLoad() {
     this.loadMap();
-    this.geolocation.getCurrentPosition().then(pos => {
-      this.lat = pos.coords.latitude;
-      this.lng = pos.coords.longitude;
-    })
-      .catch(err => console.log(err));
+    // this.geolocation.getCurrentPosition().then(pos => {
+    //   this.lat = pos.coords.latitude;
+    //   this.lng = pos.coords.longitude;
+    // })
+      // .catch(err => console.log(err));
   }
 // Charger la map
   loadMap() {
@@ -51,6 +52,8 @@ export class GeolocationPage {
         this.map = new google.maps.Map(
           this.mapElement.nativeElement,
           mapOptions);
+
+          this.addMarker();
 
       },
       err => {
@@ -87,10 +90,10 @@ export class GeolocationPage {
 
   }
 
-  pushDevInfo() {
-    console.log("pushDevInfo")
-    this.navCtrl.push(DevInfoPage);
-  }
+  // pushDevInfo() {
+  //   console.log("pushDevInfo")
+  //   this.navCtrl.push(DevInfoPage);
+  // }
 
 
  

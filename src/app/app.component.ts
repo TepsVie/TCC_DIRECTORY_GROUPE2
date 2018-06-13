@@ -5,11 +5,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { OnboardingPage } from '../pages/onboarding/onboarding'; 
 import { GeolocationPage } from '../pages/geolocation/geolocation';
+
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = GeolocationPage;
+  rootPage:any = OnboardingPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
