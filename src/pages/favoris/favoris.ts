@@ -27,7 +27,7 @@ export class FavorisPage {
   ionViewWillEnter(){
     this.getDbFavoris();
   }
-  
+
   //récupérer les données
   getDbFavoris() {
     this.favoris = []; 

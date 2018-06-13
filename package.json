@@ -1,7 +1,7 @@
 {
   "name": "TCC_DIRECTORY_GROUPE2",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
+  "version": "1.0.1",
+  "author": "GGroupe2 Vaitiare, Teparii, Nicolas",
   "homepage": "http://ionicframework.com/",
   "private": true,
   "scripts": {
@@ -45,7 +45,7 @@
     "@ionic/app-scripts": "3.1.9",
     "typescript": "~2.6.2"
   },
-  "description": "An Ionic project",
+  "description": "An awesome App",
   "cordova": {
     "plugins": {
       "cordova-sqlite-storage": {},

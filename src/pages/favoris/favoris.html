@@ -14,9 +14,10 @@
 
 
 <ion-content padding>
-    <button ion-button full color="light">{{name}}</button>
+    
 
     <ion-card *ngFor="let favoris of favoris"> 
+        <button ion-button full color="light">{{favoris.name}}</button>
       <div style="position: relative">
     <!-- on parcour un certain nbr de fois les oeuvres ()
     oeuvre= correspond à chaque élement d'oeuvres et permet d'accéder aux propriétés de l'objet oeuvres -->
