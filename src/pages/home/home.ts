@@ -1,3 +1,4 @@
+import { GooglemapPage } from '../googlemap/googlemap';
 import { Component } from '@angular/core';
 import { NavController, Platform } from 'ionic-angular';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
@@ -19,6 +20,10 @@ export class HomePage {
 
   pushFavoris(){
     this.navCtrl.push(FavorisPage);
+  }
+
+  addMarker(){
+    this.navCtrl.push(GooglemapPage);
   }
 
    // création de la base
