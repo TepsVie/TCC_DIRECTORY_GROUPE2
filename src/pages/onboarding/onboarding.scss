@@ -13,7 +13,7 @@ page-onboarding {
       }
       
       h2 {
-          margin-top:80% !important;
+          margin-top:60% !important;
           font-weight:bold;
           font-size:1em;
       }
@@ -26,7 +26,7 @@ page-onboarding {
       }
       
       .swiper-pagination-bullet-active {
-          background:#C400FF;
+          background:rgb(28, 23, 29);
       }
       
       .swiper-pagination {
@@ -42,5 +42,9 @@ page-onboarding {
           cursor:pointer;
           z-index:5;
       }
+
+    //   ion-content {
+    //       background-color: blue
+    //   }
 
 }
