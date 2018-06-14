@@ -17,8 +17,8 @@ export class GeolocationPage {
 
   @ViewChild('map') mapElement: ElementRef;
   map: any;
-  // lat: any;
-  // lng: any;
+  lat: any;
+  lng: any;
 
   constructor(
     public navCtrl: NavController, 
@@ -27,11 +27,11 @@ export class GeolocationPage {
 // Récupérer la position actuel
   ionViewDidLoad() {
     this.loadMap();
-    // this.geolocation.getCurrentPosition().then(pos => {
-    //   this.lat = pos.coords.latitude;
-    //   this.lng = pos.coords.longitude;
-    // })
-      // .catch(err => console.log(err));
+    this.geolocation.getCurrentPosition().then(pos => {
+      this.lat = pos.coords.latitude;
+      this.lng = pos.coords.longitude;
+    })
+      .catch(err => console.log(err));
   }
 // Afficher la position
   loadMap() {
@@ -56,6 +56,7 @@ export class GeolocationPage {
           this.addMarker();
 
       },
+
       err => {
         console.log(err);
       }
@@ -63,6 +64,7 @@ export class GeolocationPage {
     );
 
   }
+
 // Ajouter un marqueur
   addMarker() {
 
@@ -97,10 +99,9 @@ export class GeolocationPage {
 
 
  
-//   pushHome() {
-//     console.log("pushGeolocation")
-//     this.navCtrl.push(GeolocationPage);
-//   }
-// }
-
+  pushHome() {
+    console.log("pushGeolocation")
+    this.navCtrl.push(GeolocationPage);
+  }
 }
+
