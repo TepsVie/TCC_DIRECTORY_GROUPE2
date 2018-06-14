@@ -29,6 +29,7 @@ export class HomePage {
   showselected($event) {
     this.selected_value = $event;
     console.log(this.selected_value);
+    this.pushLists();
   }
 
   //Get Skills From Api
