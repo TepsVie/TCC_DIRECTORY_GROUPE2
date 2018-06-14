@@ -25,6 +25,7 @@ export class HomePage {
     });
   }
 
+  
   //Get Selected Value
   showselected($event) {
     this.selected_value = $event;
