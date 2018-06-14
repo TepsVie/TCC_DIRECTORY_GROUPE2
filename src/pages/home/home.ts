@@ -4,6 +4,8 @@ import { SkillsApiService } from './../../services/skillsapi.service';
 
 import { Component } from '@angular/core';
 import { NavController, Platform } from 'ionic-angular';
+import { InformationPage } from '../information/information';
+import { FavorisPage } from '../favoris/favoris';
 
 @Component({
   selector: 'page-home',
@@ -46,11 +48,11 @@ export class HomePage {
 
   //Push to Favoris Page
   pushFavoris() {
-    this.navCtrl.push('')
+    this.navCtrl.push(FavorisPage)
   }
 
   //Push to Info Page
   pushInfo() {
-    this.navCtrl.push('')
+    this.navCtrl.push(InformationPage)
   }
 }

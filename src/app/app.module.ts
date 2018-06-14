@@ -21,6 +21,8 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { CallNumber } from '@ionic-native/call-number';
 import { SMS } from '@ionic-native/sms';
+import { InformationPage } from '../pages/information/information';
+import { FavorisPage } from '../pages/favoris/favoris';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { SMS } from '@ionic-native/sms';
     BusinessPage,
     DevInfoPage,
     OnboardingPage,
-    GeolocationPage
+    GeolocationPage,
+    InformationPage,
+    FavorisPage
   ],
   imports: [
     BrowserModule,
@@ -44,7 +48,9 @@ import { SMS } from '@ionic-native/sms';
     BusinessPage,
     DevInfoPage,
     OnboardingPage,
-    GeolocationPage
+    GeolocationPage,
+    InformationPage,
+    FavorisPage
   ],
   providers: [
     StatusBar,

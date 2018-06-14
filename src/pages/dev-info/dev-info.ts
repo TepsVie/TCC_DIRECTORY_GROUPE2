@@ -1,4 +1,4 @@
-import { Geolocation } from '@ionic-native/geolocation';
+
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 import { CallNumber } from '@ionic-native/call-number';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
@@ -25,17 +25,28 @@ export class DevInfoPage {
   public swipe: number = 0;
   url: string;
   phoneNumber: string;
-  favActive = false;
+  favActive: boolean;
   toast: any;
 
   db: SQLiteObject;
-  database: SQLiteObject;
+
+  dev_ID: number;
+  dev_Name: string;
+
+  favValue: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, private iab: InAppBrowser, private callNumber: CallNumber, private sms: SMS, private toastCtrl: ToastController, private sqlite: SQLite) {
-    this.getLaunch();
+
+
+
   }
 
 
+  ionViewWillEnter() {
+    this.dev_ID = this.navParams.get('idDevValue');
+    this.getLaunch();
+    this.trueFalse();
+  }
 
   //Récupère la liste des dev
   getLaunch() {
@@ -47,7 +58,7 @@ export class DevInfoPage {
   }
 
   getDevInfo(): Promise<any> {
-    const url = `${this.baseUrl}${this.navParams.get('idDevValue')}`;
+    const url = `${this.baseUrl}${this.dev_ID}`;
     return this.http.get(url)
       .toPromise()
       .then(response => response.json() as InfoBizGlobal)
@@ -58,8 +69,8 @@ export class DevInfoPage {
   //Signale un abus
   getLaunchAbus(arg) {
     this.getAbus(arg)
-      .then(csluiFetched => {
-        this.abusInfo = csluiFetched;
+      .then(abusFetched => {
+        this.abusInfo = abusFetched;
         console.log(this.abusInfo);
         this.abusToast();
       })
@@ -101,18 +112,51 @@ export class DevInfoPage {
     this.sms.send(phoneNumber, '');
   }
 
-  //Favoris
-  devToFavoris(devId: any, devName: any) {
+  trueFalse() {
     this.sqlite.create({
       name: 'datafavoris.db',
       location: 'default'
     })
       .then((db: SQLiteObject) => {
-        db.executeSql("INSERT INTO table VALUES (devId, devName, 1)", {})
-          .then(() => console.log('Executed SQL'))
-          .catch(e => console.log(e));
-        /* db.executeSql('UPDATE favoris SET fav = 1 WHERE code = ' + code, {})
-          .then((data) => {}) */
+        db.executeSql("SELECT * FROM favoris WHERE dev_id = " + this.dev_ID, {})
+          .then((data) => {
+            console.log('ehoa: ', JSON.stringify(data.rows));
+            if (data.rows.length == 1) {
+              this.favActive = true;
+              console.log('Fav Value: True', data.rows.lenght)
+            }
+            else {
+            this.favActive = false;
+              console.log('Fav Value: False', data.rows.lenght)
+            }
+          })
+      })
+  }
+
+  //Favoris
+  devToFavoris(devName) {
+    this.sqlite.create({
+      name: 'datafavoris.db',
+      location: 'default'
+    })
+      .then((db: SQLiteObject) => {
+        this.updateFavoris();
+
+        if (this.favActive == true) {
+          db.executeSql("INSERT INTO favoris ('dev_id', 'name', 'fav') VALUES (?,?, 1)", [this.dev_ID, devName])
+            .then(() => console.log('Insert Sucess', db))
+            .catch(e => console.log(e));
+          db.executeSql("UPDATE favoris SET fav = 1 where dev_id=?", [this.dev_ID])
+            .then(() =>
+              console.log('fav set to 1')
+            )
+        }
+        else if (this.favActive == false) {
+          db.executeSql("UPDATE favoris SET fav = 0 where dev_id=?", [this.dev_ID])
+            .then(() =>
+              console.log('fav set to 0')
+            )
+        }
       })
       .catch(e => console.log(e));
   }
@@ -120,7 +164,8 @@ export class DevInfoPage {
   updateFavoris() {
     this.favActive = !this.favActive;
     console.log('Favoris new state:' + this.favActive);
-    this.favoriteToast(); 
+    this.favoriteToast();
+
   }
 
   favoriteToast() {
@@ -128,15 +173,16 @@ export class DevInfoPage {
       this.toast = this.toastCtrl.create({
         message: "Ajouté aux favoris",
         duration: 2400,
-        position: 'top'
+        position: 'bottom'
       });
-      
+
     }
     else {
       this.toast = this.toastCtrl.create({
         message: "Retiré des favoris",
         duration: 2400,
-        position: 'top'
+        position: 'bottom'
+
       })
     }
     this.toast.present();
