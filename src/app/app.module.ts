@@ -23,8 +23,10 @@ import { CallNumber } from '@ionic-native/call-number';
 import { SMS } from '@ionic-native/sms';
 import { InformationPage } from '../pages/information/information';
 import { FavorisPage } from '../pages/favoris/favoris';
-import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
+
+/* import { ScreenOrientation } from '@ionic-native/screen-orientation';
+ */
 @NgModule({
   declarations: [
     MyApp,
@@ -63,7 +65,7 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
     SMS,
     Geolocation,
     SkillsApiService,
-    ScreenOrientation
+    /* ScreenOrientation */
   ]
 })
 export class AppModule { }

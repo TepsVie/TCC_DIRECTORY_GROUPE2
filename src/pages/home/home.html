@@ -15,10 +15,9 @@
     <ion-label>Selectionner</ion-label>
 
     <ion-select [(ngModel)]="toppings" multiple="true" cancelText="Retour" okText="Valider" (ionChange)="showselected($event)">
-      <ion-option value="{{skill.id}}" *ngFor="let skill of skills.data">
-        <h2>{{skill.name}}</h2>
-      </ion-option>
-
+        <ion-option value="{{skill.id}}" *ngFor="let skill of skills.data">
+          <h2>{{skill.name}}</h2>
+        </ion-option>
     </ion-select>
 
   </ion-item>

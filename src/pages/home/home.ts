@@ -12,11 +12,10 @@ import { FavorisPage } from '../favoris/favoris';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  toppings: Array<string>;
+  toppings : Array<string>;
   skills: SkillsApiGlobal = new SkillsApiGlobal;
   selected_value: string;
   value: string;
-
 
 
   constructor(private platfrom: Platform, public navCtrl: NavController, private skillsApiService: SkillsApiService) {
@@ -25,7 +24,6 @@ export class HomePage {
     });
   }
 
-  
   //Get Selected Value
   showselected($event) {
     this.selected_value = $event;
@@ -37,15 +35,27 @@ export class HomePage {
   getSkills() {
     this.skillsApiService.getSkills()
       .then(skillsFetched => {
-        this.skills = skillsFetched;
-        console.log(this.skills);
+        this.skills = skillsFetched; this.skills.data[0].checked = false;
+        console.log("skill0", this.skills.data.length);
+        for (let i = 0; i < this.skills.data.length; i++) {
+          this.skills.data[i].checked = false;
+        }
+        console.log(JSON.stringify(this.skills));
       })
+  }
+
+  selectAllSkills() {
+    for (let i = 0; i < this.skills.data.length; i++) {
+      this.skills.data[i].checked = true;
+    }
   }
 
   //Push to Developper List Page
   pushLists() {
+
     this.navCtrl.push(BusinessPage, {
-      value: this.selected_value.toString()})
+      value: this.selected_value.toString()
+    })
   }
 
   //Push to Favoris Page

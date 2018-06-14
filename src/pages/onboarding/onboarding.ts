@@ -2,7 +2,7 @@ import { HomePage } from './../home/home';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
-import { ScreenOrientation } from '@ionic-native/screen-orientation';
+/* import { ScreenOrientation } from '@ionic-native/screen-orientation'; */
 
 
 @IonicPage()
@@ -14,10 +14,10 @@ export class OnboardingPage {
 
   database: SQLiteObject;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private sqlite: SQLite, private platform: Platform, private screenOrientation: ScreenOrientation) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private sqlite: SQLite, private platform: Platform, /* private screenOrientation: ScreenOrientation */) {
     this.platform.ready().then(() => {
       this.initDb();
-      this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+  /*     this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT); */
     })
   }
   //Go Home Method

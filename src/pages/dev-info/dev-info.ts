@@ -1,3 +1,4 @@
+import { GeolocationPage } from './../geolocation/geolocation';
 
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 import { CallNumber } from '@ionic-native/call-number';
@@ -8,7 +9,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { SMS } from '@ionic-native/sms';
 import { ToastController } from 'ionic-angular';
-import { GeolocationPage } from '../geolocation/geolocation';
+
 
 
 
@@ -18,6 +19,7 @@ import { GeolocationPage } from '../geolocation/geolocation';
 })
 export class DevInfoPage {
 
+  segments: string = "Description";
   private baseUrl: string = 'http://tccdirectory.1click.pf/api/business/';
   private abusUrl: string = 'http://tccdirectory.1click.pf/api/abus/business/';
   devInfos: InfoBizGlobal = new InfoBizGlobal;
@@ -34,6 +36,7 @@ export class DevInfoPage {
   dev_Name: string;
 
   favValue: any;
+  idDev = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, private iab: InAppBrowser, private callNumber: CallNumber, private sms: SMS, private toastCtrl: ToastController, private sqlite: SQLite) {
 
@@ -126,7 +129,7 @@ export class DevInfoPage {
               console.log('Fav Value: True', data.rows.lenght)
             }
             else {
-            this.favActive = false;
+              this.favActive = false;
               console.log('Fav Value: False', data.rows.lenght)
             }
           })
@@ -188,7 +191,12 @@ export class DevInfoPage {
     this.toast.present();
   }
 
-  pushGeolocation() {
-    this.navCtrl.push(GeolocationPage)
+  showIdDev(arg) {
+    this.idDev = arg;
+    console.log('ID du DEVinfo: ', this.idDev);
+    this.navCtrl.push(GeolocationPage, {
+      idDevValue: this.idDev
+    })
   }
+
 }
