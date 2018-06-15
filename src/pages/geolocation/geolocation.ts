@@ -19,6 +19,8 @@ export class GeolocationPage {
 
   results = [];
   map: any;
+  colo: any;
+  pussy: any;
 
   devInfos: InfoBizGlobal = new InfoBizGlobal;
   private baseUrl: string = 'http://tccdirectory.1click.pf/api/business/';
@@ -34,36 +36,38 @@ export class GeolocationPage {
   }
 
 
+  initDirections() {
+    var directionsService = new google.maps.DirectionsService;
+    var directionsDisplay = new google.maps.DirectionsRenderer;
+    var map = this.map;
+    let destLatLng = new google.maps.LatLng(this.colo, this.pussy);
 
-  // Afficher la position
-  /*  loadMap() {
- 
-     this.geolocation.getCurrentPosition()
- 
-       .then((resp) => {
-         this.addResultsMarker();
-         let latLng = new google.maps.LatLng(, 2.2944813000000295);
-         let mapOptions = {
-           center: latLng,
-           zoom: 7,
-           travelMode: google.maps.TravelMode.ROADMAP
-         }
- 
-         let map = new google.maps.Map(document.getElementById('map'), mapOptions);
- 
-         let marker = new google.maps.Marker({
-           position: latLng,
-           map: map,
-           draggable: true,
-           animation: google.maps.Animation.DROP,
-           title: 'MAP',
-         });
-         err => {
-           console.log(err);
-         }
-       });
-   }
-    */
+    directionsDisplay.setMap(map);
+    console.log('test initDirections');
+
+    this.calculateAndDisplayRoute(directionsService, directionsDisplay, destLatLng);
+
+  }
+
+  calculateAndDisplayRoute(directionsService, directionsDisplay, destLatLng) {
+
+    let latLng = new google.maps.LatLng(
+      48.8584,
+      2.2945);
+    directionsService.route({
+      origin: latLng,
+      destination: destLatLng,
+      travelMode: 'DRIVING'
+    }, function (response, status) {
+      if (status === 'OK') {
+        directionsDisplay.setDirections(response);
+      } else {
+        window.alert('Directions request failed due to ' + status);
+      }
+    });
+  }
+
+
   loadMap() {
 
     let latLng = new google.maps.LatLng(48.85837009999999, 2.2944813000000295);
@@ -76,7 +80,6 @@ export class GeolocationPage {
     }
 
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-    this.addResultsMarker();
     this.addMarker();
   }
 
@@ -91,6 +94,7 @@ export class GeolocationPage {
       ),
 
     });
+    this.initDirections();
   }
   addMarker() {
 
@@ -103,7 +107,7 @@ export class GeolocationPage {
     let content = "<p>Voues etes ici</p>";
 
     this.addInfoWindow(marker, content);
-
+    this.addResultsMarker();
   }
 
   addInfoWindow(marker, content) {
@@ -128,7 +132,8 @@ export class GeolocationPage {
         console.log('Data:', data);
         this.results.push(data);
         console.log("Développeur: ", this.results);
-
+        this.colo = this.results[0].latitude;
+        this.pussy = this.results[0].longitude;
         this.loadMap();
         return this.results;
       });

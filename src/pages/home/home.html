@@ -8,25 +8,24 @@
 
 <ion-content padding>
 
-  <h1 text-center>TCC DIRECTORY</h1>
+  <div class='center'>
+    <h1 text-center>TCC DIRECTORY</h1>
 
-  <ion-item>
+    <ion-item>
 
-    <ion-label>Selectionner</ion-label>
-
-    <ion-select [(ngModel)]="toppings" multiple="true" cancelText="Retour" okText="Valider" (ionChange)="showselected($event)">
+      <ion-label>Selectionner</ion-label>
+      <ion-select [(ngModel)]="toppings" multiple="true" cancelText="Retour" okText="Valider" (ionChange)="showselected($event)">
         <ion-option value="{{skill.id}}" *ngFor="let skill of skills.data">
           <h2>{{skill.name}}</h2>
         </ion-option>
-    </ion-select>
-
-  </ion-item>
-
-  <button ion-button class='homeButton' (click)="pushFavoris()">Favoris</button>
-
-  <button ion-button round clear class='homeButton' (click)="pushInfo()">
-    <ion-icon name="information-circle" large></ion-icon>
-  </button>
-
+      </ion-select>
+    </ion-item>
+    <button ion-button class='homeButton' (click)="pushFavoris()">Favoris</button>
+  </div>
+  <div class='infoCenter'>
+    <button ion-button round clear class='homeButton' (click)="pushInfo()">
+      <ion-icon name="information-circle" large></ion-icon>
+    </button>
+  </div>
 
 </ion-content>

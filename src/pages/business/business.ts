@@ -14,6 +14,7 @@ export class BusinessPage {
 
   value: string;
   idDev= [];
+  devSkills= [];
   devTables = [];
   dev_value: string;
   private baseUrl: string = 'http://tccdirectory.1click.pf/api/';
@@ -32,6 +33,7 @@ export class BusinessPage {
     const url = `${this.baseUrl}search`;
     let table = [];
     this.devTables = [];
+    this.devSkills = [];
 
     return this.http.post(url, { 'skills': this.value })
       .map(res => res.json())
@@ -41,6 +43,7 @@ export class BusinessPage {
           if (table.indexOf(data[i].id) == -1) {
             table.push(data[i].id)
             this.devTables.push(data[i]);
+            this.devSkills.push(data[i].skills);
           }
         }
         console.log('Développeur: ', this.devTables);

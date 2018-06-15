@@ -15,7 +15,7 @@
 
 <ion-content padding>
 
-  <ion-segment [(ngModel)]="segments" color="primary">
+  <!-- <ion-segment [(ngModel)]="segments" color="primary">
     <ion-segment-button value="Description">
       <ion-icon name="book"></ion-icon>
     </ion-segment-button>
@@ -25,13 +25,16 @@
     <ion-segment-button value="Info">
       <ion-icon name="information-circle"></ion-icon>
     </ion-segment-button>
-  </ion-segment>
+  </ion-segment> -->
 
   <ion-fab bottom right>
     <button ion-fab>
       <ion-icon name="add-circle"></ion-icon>
     </button>
     <ion-fab-list side="top">
+      <button ion-fab (click)='showIdDev(devInfos.id)'>
+        <ion-icon name="pin"></ion-icon>
+      </button>
       <button ion-fab (click)='openWebPage(devInfos.facebook_url)'>
         <ion-icon name="logo-facebook"></ion-icon>
       </button>
@@ -61,10 +64,10 @@
     </button>
   </ion-fab>
 
-  <ion-item [ngSwitch]='segments'>
-    <ion-item *ngSwitchCase="'Info'">
+  <div>
+    <div>
       <img src={{devInfos.logo}} />
-      <ion-card-content>
+      <ion-card-content style="margin: 0%">
         <ion-row no-padding>
           <ion-col>
             <ion-card-title>
@@ -89,6 +92,26 @@
           <p>{{devInfos.phone}}</p>
         </div>
         <div>
+          <ion-icon name="book"> Description:</ion-icon>
+          <p>{{devInfos.description}}</p>
+        </div>
+        <div>
+          <ion-icon name="book"> Horaire:</ion-icon>
+          <p>Lundi: {{devInfos.monday_start}}-{{devInfos.monday_end}}</p>
+          <p>Mardi: {{devInfos.tuesday_start}}-{{devInfos.tuesday_end}}</p>
+          <p>Mercredi: {{devInfos.wednesday_start}}-{{devInfos.wednesday_end}}</p>
+          <p>Jeudi: {{devInfos.thursday_start}}-{{devInfos.thursday_end}}</p>
+          <p>Vendredi: {{devInfos.friday_start}}-{{devInfos.friday_end}}</p>
+          <p>Samedi: {{devInfos.saturday_start}}-{{devInfos.saturday_end}}</p>
+        </div>
+        <div>
+          <ion-icon name="book"> Compétence:</ion-icon>
+          <div *ngFor="let skill of devInfos.skills">
+            {{skill.name}}
+          </div>
+          <p></p>
+        </div>
+        <div>
           <ion-icon name="globe"> Site Web:</ion-icon>
           <p>
             <a (click)='openWebPage(devInfos.website_url)'>
@@ -96,20 +119,8 @@
             </a>
           </p>
         </div>
-        <button ion-button clear class='Button' (click)='showIdDev(devInfos.id)'>GPS</button>
       </ion-card-content>
-    </ion-item>
-    <ion-item *ngSwitchCase="'Description'">
+    </div>
+  </div>
 
-      <ion-card-title>
-        <ion-item>
-          <h1>
-            {{devInfos.name}}
-          </h1>
-        </ion-item>
-      </ion-card-title>
-      <p>{{devInfos.description}}</p>
-
-    </ion-item>
-  </ion-item>
 </ion-content>
