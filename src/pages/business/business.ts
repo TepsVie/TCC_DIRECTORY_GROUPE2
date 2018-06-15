@@ -1,10 +1,7 @@
 import { DevInfoPage } from './../dev-info/dev-info';
-import { Observable } from 'rxjs/Observable';
 import { Http } from '@angular/http';
-import { BizApiGlobal } from './../../models/bizapi-global.model';
 import { Component } from '@angular/core';
 import { NavController, NavParams, Platform } from 'ionic-angular';
-
 
 @Component({
   selector: 'page-business',
@@ -27,14 +24,13 @@ export class BusinessPage {
   }
 
 
+  //Récupère la liste des développeurs
   searchBiz() {
-
     this.value = this.navParams.get('value');
     const url = `${this.baseUrl}search`;
     let table = [];
     this.devTables = [];
     this.devSkills = [];
-
     return this.http.post(url, { 'skills': this.value })
       .map(res => res.json())
       .subscribe((data) => {
@@ -48,10 +44,10 @@ export class BusinessPage {
         }
         console.log('Développeur: ', this.devTables);
         return this.devTables
-
       })
   }
 
+  //Récupère l'ID du dévelopeur sélectionné 
   showIdDev(arg) {
     this.idDev = arg;
     console.log('ID du DEV: ', this.idDev);

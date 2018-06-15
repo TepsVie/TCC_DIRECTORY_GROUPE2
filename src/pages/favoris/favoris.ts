@@ -3,13 +3,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 
-/**
- * Generated class for the FavorisPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-favoris',
@@ -20,17 +13,15 @@ export class FavorisPage {
   favoris = [];
   idDev = [];
 
-  constructor(public navCtrl: NavController, private plateform: Platform, public navParams: NavParams, private sqlite: SQLite) {
-    this.plateform.ready().then(() => {
-
-    })
+  constructor(public navCtrl: NavController, public navParams: NavParams, private sqlite: SQLite) {
+  
   }
 
   ionViewWillEnter() {
     this.getDbFavoris();
   }
 
-  //récupérer les données
+  //Récupére les données de la base de donné
   getDbFavoris() {
     this.favoris = [];
     this.sqlite.create({
@@ -46,7 +37,8 @@ export class FavorisPage {
           })
       })
   }
-
+  
+//Récupère l'ID du Développeur
   showIdDev(arg) {
     this.idDev = arg;
     console.log('ID du DEV: ', this.idDev);

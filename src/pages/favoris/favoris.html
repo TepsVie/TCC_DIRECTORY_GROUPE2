@@ -1,26 +1,14 @@
-<!--
-  Generated template for the FavorisPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
     <ion-title>Favoris</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding>
-
   <ion-list>
     <ion-item *ngFor="let favori of favoris">
-      
       <h2>{{favori.name}}</h2>
-      <button ion-button clear item-end (click)='this.showIdDev(favori.dev_id)' >Voir</button>
+      <button ion-button clear item-end (click)='this.showIdDev(favori.dev_id)'>Voir</button>
     </ion-item>
   </ion-list>
-
 </ion-content>
