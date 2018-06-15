@@ -100,7 +100,7 @@ export class DevInfoPage {
 
   //Méthode Browser
   openWebPage(url: string) {
-    this.iab.create(url, '_system');
+    this.iab.create(url, '_blank');
   }
 
   //Méthode Call Number
