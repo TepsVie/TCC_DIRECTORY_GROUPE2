@@ -26,7 +26,7 @@ page-onboarding {
       }
       
       .swiper-pagination-bullet-active {
-          background:#C400FF;
+          background:rgb(25, 25, 26);
       }
       
       .swiper-pagination {
@@ -41,6 +41,13 @@ page-onboarding {
           text-align:center;
           cursor:pointer;
           z-index:5;
+          font-size:60px;
+
+      }
+
+      .bg{
+          background : linear-gradient(to top, #d674b7 0%, #fff 100%);
+
       }
 
 }
