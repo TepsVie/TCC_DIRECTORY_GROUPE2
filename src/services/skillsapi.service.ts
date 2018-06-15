@@ -1,19 +1,12 @@
 
-// Core components
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 
-// RxJS
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 
-
-// Models
-// Importez vos models ici
-
 import { SkillsApiGlobal } from '../models/skillsapi-global.model'
-import { BizApiGlobal } from '../models/bizapi-global.model'
-import { Observable } from 'rxjs/Observable';
+
 
 @Injectable()
 export class SkillsApiService {

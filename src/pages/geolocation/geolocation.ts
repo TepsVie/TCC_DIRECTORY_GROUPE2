@@ -3,7 +3,6 @@ import { NavParams } from 'ionic-angular';
 
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { Geolocation } from '@ionic-native/geolocation';
 import { InfoBizGlobal } from './../../models/infobiz-global.model';
 
 declare var google;
@@ -26,7 +25,7 @@ export class GeolocationPage {
   private baseUrl: string = 'http://tccdirectory.1click.pf/api/business/';
 
   constructor(
-    public navCtrl: NavController, private geolocation: Geolocation, private navParams: NavParams, private http: Http) { }
+    public navCtrl: NavController, private navParams: NavParams, private http: Http) { }
 
 
   ionViewWillEnter() {

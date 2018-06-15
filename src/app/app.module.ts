@@ -1,3 +1,5 @@
+import { OnboardingPageModule } from './../pages/onboarding/onboarding.module';
+import { FavorisPageModule } from './../pages/favoris/favoris.module';
 
 import { BusinessPage } from './../pages/business/business';
 import { SkillsApiService } from './../services/skillsapi.service';
@@ -24,6 +26,8 @@ import { SMS } from '@ionic-native/sms';
 import { InformationPage } from '../pages/information/information';
 import { FavorisPage } from '../pages/favoris/favoris';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
+import { InformationPageModule } from '../pages/information/information.module';
+
 
 
 
@@ -33,16 +37,17 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
     HomePage,
     BusinessPage,
     DevInfoPage,
-    OnboardingPage,
     GeolocationPage,
-    InformationPage,
-    FavorisPage
+  
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpModule,
-    HttpClientModule
+    HttpClientModule,
+    FavorisPageModule,
+    InformationPageModule,
+    OnboardingPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

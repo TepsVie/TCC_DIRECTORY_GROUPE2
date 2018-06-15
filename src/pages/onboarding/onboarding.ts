@@ -4,7 +4,6 @@ import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
-
 @IonicPage()
 @Component({
   selector: 'page-onboarding',
