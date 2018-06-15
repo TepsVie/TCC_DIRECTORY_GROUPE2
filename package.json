@@ -1,5 +1,5 @@
 {
-  "name": "TCC_DIRECTORY_GROUPE2",
+  "name": "COM.TCC_DIRECTORY.GROUPE2",
   "version": "1.0.1",
   "author": "GGroupe2 Vaitiare, Teparii, Nicolas",
   "homepage": "http://ionicframework.com/",
@@ -32,6 +32,7 @@
     "@ionic-native/status-bar": "4.7.0",
     "@ionic/storage": "2.1.3",
     "call-number": "^1.0.1",
+    "cordova-android": "7.0.0",
     "cordova-browser": "5.0.3",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-geolocation": "^4.0.1",
